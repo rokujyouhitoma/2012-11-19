@@ -1,0 +1,80 @@
+Original author(Best Regards): http://d.hatena.ne.jp/nshinchan01/20121114/1352907064
+
+My Environment
+===============
+
+Each programming language
+--------------------------
+
+% gcc --version
+i686-apple-darwin11-llvm-gcc-4.2 (GCC) 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00)
+Copyright (C) 2007 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+% pypy1.9 --version
+Python 2.7.2 (341e1e3821ff, Jun 07 2012, 15:42:54)
+[PyPy 1.9.0 with GCC 4.2.1]
+
+% python2.7 --version
+Python 2.7.2
+
+% ruby --version
+ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+
+% ghc --version
+The Glorious Glasgow Haskell Compilation System, version 7.4.2
+
+PC SPEC
+--------
+
+% sysctl machdep.cpu.brand_string
+machdep.cpu.brand_string: Intel(R) Core(TM) i5-2557M CPU @ 1.70GHz
+
+% arch
+i386
+
+% sw_vers    
+ProductName: Mac OS X
+ProductVersion:  10.8.1
+BuildVersion:    12B19
+
+% uname -a      
+Darwin ike-no-MacBook-Air.local 12.1.0 Darwin Kernel Version 12.1.0: Tue Aug 14 13:29:55 PDT 2012; root:xnu-2050.9.2~1/RELEASE_X86_64 x86_64
+
+How to prepare
+===============
+
+% gcc mapreverse.c -o mapreverse_c
+
+% ghc -o mapreverse_hs mapreverse.hs
+[1 of 1] Compiling Main             ( mapreverse.hs, mapreverse.o )
+Linking mapreverse_hs ...
+
+Result
+=======
+
+% time ./mapreverse_c 
+15996001
+./mapreverse_c  0.13s user 0.09s system 93% cpu 0.231 total
+
+% time python2.7 mapreverse.py
+15996001
+python2.7 mapreverse.py  1.37s user 0.39s system 99% cpu 1.772 total
+
+% time pypy1.9 mapreverse.py 
+15996001
+pypy1.9 mapreverse.py  0.03s user 0.02s system 68% cpu 0.066 total
+
+% time ruby mapreverse.rb
+15996001ruby mapreverse.rb  4.14s user 0.11s system 99% cpu 4.255 total
+
+% time ./mapreverse_hs
+15996001
+./mapreverse_hs  0.00s user 0.00s system 74% cpu 0.008 total
+
+1. Haskell7.4.2
+2. PyPy1.9
+3. GCC4.2.1
+4. CPython2.7
+5. Ruby1.8.7
